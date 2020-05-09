@@ -17,7 +17,13 @@ class OpenWeatherMapApi: ApiProtocol {
                                 apiKey: "")) else { return }
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
+            guard let data = data else {
+                guard let error = error else {
+                    return
+                }
+                completion(Result.failure(error))
+                return
+            }
             do {
                 let items = try JSONDecoder().decode(WeatherData.self, from: data)
                 completion(Result.success(items))
