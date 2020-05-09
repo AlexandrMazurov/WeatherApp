@@ -8,4 +8,7 @@
 
 import Foundation
 
-protocol LocalRepositoryProtocol {}
+protocol LocalRepositoryProtocol {
+    
+    
+}

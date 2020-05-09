@@ -1,4 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="HourlyForecastManagedObject" representedClassName="HourlyForecastManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="degree" attributeType="String"/>
+        <attribute name="imageName" attributeType="String"/>
+        <attribute name="time" attributeType="String"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherManagedObject" inverseName="hourlyForecast" inverseEntity="WeatherManagedObject"/>
+    </entity>
+    <entity name="WeakForecastManagedObject" representedClassName="WeakForecastManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="dayDegree" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dayName" attributeType="String"/>
+        <attribute name="image" attributeType="String"/>
+        <attribute name="nightDegree" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherManagedObject" inverseName="weakForecast" inverseEntity="WeatherManagedObject"/>
+    </entity>
+    <entity name="WeatherInfoManagedObject" representedClassName="WeatherInfoManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <attribute name="value" attributeType="String"/>
+        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherManagedObject" inverseName="weatherInfo" inverseEntity="WeatherManagedObject"/>
+    </entity>
+    <entity name="WeatherManagedObject" representedClassName="WeatherManagedObject" syncable="YES" codeGenerationType="class">
+        <attribute name="cityName" attributeType="String"/>
+        <attribute name="degree" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="situation" attributeType="String"/>
+        <relationship name="hourlyForecast" toMany="YES" deletionRule="Nullify" destinationEntity="HourlyForecastManagedObject" inverseName="weather" inverseEntity="HourlyForecastManagedObject"/>
+        <relationship name="weakForecast" toMany="YES" deletionRule="Nullify" destinationEntity="WeakForecastManagedObject" inverseName="weather" inverseEntity="WeakForecastManagedObject"/>
+        <relationship name="weatherInfo" toMany="YES" deletionRule="Nullify" destinationEntity="WeatherInfoManagedObject" inverseName="weather" inverseEntity="WeatherInfoManagedObject"/>
+    </entity>
+    <elements>
+        <element name="WeatherManagedObject" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="HourlyForecastManagedObject" positionX="-54" positionY="18" width="128" height="103"/>
+        <element name="WeakForecastManagedObject" positionX="-36" positionY="36" width="128" height="118"/>
+        <element name="WeatherInfoManagedObject" positionX="-18" positionY="54" width="128" height="88"/>
+    </elements>
 </model>
