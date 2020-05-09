@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol ApiProtocol {}
+protocol ApiProtocol {
+    func getWeatherForecast(lat: String, lon: String, completion: @escaping (Result<WeatherData, Error>) -> Void)
+}
