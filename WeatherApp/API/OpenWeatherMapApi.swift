@@ -8,4 +8,22 @@
 
 import Foundation
 
-class OpenWeatherMapApi: ApiProtocol {}
+class OpenWeatherMapApi: ApiProtocol {
+    
+    func getWeatherForecast(lat: String, lon: String, completion: @escaping (Result<WeatherData, Error>) -> Void) {
+        guard let url = URL(string: URLEndpoint
+            .getWeatherForecast(latitude: lat,
+                                longitude: lon,
+                                apiKey: "")) else { return }
+        let session = URLSession.shared
+        session.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let items = try JSONDecoder().decode(WeatherData.self, from: data)
+                completion(Result.success(items))
+            } catch {
+                completion(Result.failure(error))
+            }
+        }.resume()
+    }
+}
