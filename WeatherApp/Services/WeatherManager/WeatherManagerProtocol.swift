@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol WeatherManagerProtocol {}
+protocol WeatherManagerProtocol {
+    func getWeatherAtCurrentLocation(completion: @escaping (Result<Weather?, Error>) -> Void)
+}
