@@ -24,9 +24,11 @@ private enum Constants {
 class WeatherManager: WeatherManagerProtocol {
     
     private let api: ApiProtocol
+    private let dateManager: DateManagerProtocol
     
     init() {
         self.api = OpenWeatherMapApi()
+        self.dateManager = DateManager()
     }
     
     func getWeatherAtCurrentLocation(completion: @escaping (Result<Weather?, Error>) -> Void)  {
@@ -65,7 +67,7 @@ class WeatherManager: WeatherManagerProtocol {
     
     private func getHourlyForecast(weather data: WeatherData) -> [HourlyForecast] {
         Array(data.list.compactMap {
-            HourlyForecast(time: String($0.time),
+            HourlyForecast(time: dateManager.getHourTimeFormat(from: TimeInterval($0.time)),
                            imageName: $0.weather.first?.icon ?? "",
                            degree: convertKelvinToCelsion(kelvin: $0.main.temperature).description)
             }[..<Constants.numberForecastsInDay])
@@ -92,9 +94,9 @@ class WeatherManager: WeatherManagerProtocol {
             WeatherInfo(name: Constants.windSpeedParameterName,
                         value: "\(Int16(data.list.first?.wind.speed ?? .zero)) km/h"),
             WeatherInfo(name: Constants.sunRiseParameterName,
-                        value: timeFormat(from: TimeInterval(data.city.sunRise))),
+                        value: dateManager.getDefaultTimeFormat(from: TimeInterval(data.city.sunRise))),
             WeatherInfo(name: Constants.suncSetParameterName,
-                        value: timeFormat(from: TimeInterval(data.city.sunSet)))
+                        value: dateManager.getDefaultTimeFormat(from: TimeInterval(data.city.sunSet)))
             
         ]
     }
@@ -106,7 +108,7 @@ class WeatherManager: WeatherManagerProtocol {
             let endOfDay = Int(Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: forecastDay)
                 ?? Date()).timeIntervalSince1970)
             let forecastArray = weatherData.list.filter { $0.time >= startOfDay && $0.time < endOfDay }
-            return WeakForecast(dayName: getDayName(timeInterval: TimeInterval(startOfDay)),
+            return WeakForecast(dayName: dateManager.getDayName(from: TimeInterval(startOfDay)),
                                 imageName: forecastArray.filter { $0.timesOfDay.pod == Constants.dayPod }.first?.weather.first?.icon ??
                                     forecastArray.first?.weather.first?.icon ?? "",
                                 minTemperature: Int16(forecastArray.compactMap { convertKelvinToCelsion(kelvin: $0.main.minTemperature) }.min() ?? .zero),
@@ -119,28 +121,5 @@ class WeatherManager: WeatherManagerProtocol {
             return .zero
         }
         return Int16(kelvin) - Constants.kelvinConstant
-    }
-    
-    private func timeFormat(from interval: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.zeroFormattingBehavior = .pad
-        formatter.allowedUnits = [.hour, .minute]
-        let startOfDay = Calendar.current.startOfDay(for: Date(timeIntervalSince1970: interval))
-        return formatter.string(from: interval - startOfDay.timeIntervalSince1970) ?? ""
-    }
-    
-    private func getDayName(timeInterval: TimeInterval) -> String {
-        let date = Date(timeIntervalSince1970: timeInterval)
-        let dayNumber = Calendar.current.component(.weekday, from: date)
-        switch dayNumber {
-        case 1: return "Sunday"
-        case 2: return "Monday"
-        case 3: return "Tuesday"
-        case 4: return "Wednesday"
-        case 5: return "Thursday"
-        case 6: return "Friday"
-        case 7: return "Saturday"
-        default: return ""
-        }
     }
 }
