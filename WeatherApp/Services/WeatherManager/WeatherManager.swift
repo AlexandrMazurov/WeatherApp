@@ -25,14 +25,17 @@ class WeatherManager: WeatherManagerProtocol {
     
     private let api: ApiProtocol
     private let dateManager: DateManagerProtocol
+    private let locationManager: LocationManagerProtocol
     
     init() {
         self.api = OpenWeatherMapApi()
         self.dateManager = DateManager()
+        self.locationManager = LocationManager()
     }
     
     func getWeatherAtCurrentLocation(completion: @escaping (Result<Weather?, Error>) -> Void)  {
-        api.getWeatherForecast(lat: "53.893009", lon: "27.567444") { [weak self] result in
+        api.getWeatherForecast(lat: locationManager.latitude ?? "",
+                               lon: locationManager.longitude ?? "") { [weak self] result in
             switch result {
             case .success(let weatherData):
                 completion(.success(self?.setupWeather(from: weatherData)))
