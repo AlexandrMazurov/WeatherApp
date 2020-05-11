@@ -46,12 +46,13 @@ class WeatherManager: WeatherManagerProtocol {
     }
     
     private func setupWeather(from weatherData: WeatherData) -> Weather {
-         Weather(cityName: weatherData.city.name,
-                 degree: getCurrentDegree(weather: weatherData),
-                 situation: getWeatherSituation(weather: weatherData),
-                 hourlyForecast: getHourlyForecast(weather: weatherData),
-                 weakForecast: getWeakForecast(weather: weatherData),
-                 weatherInfo: getWeatherInfo(weather: weatherData))
+        Weather(isCurrentLocation: true,
+                cityName: weatherData.city.name,
+                degree: getCurrentDegree(weather: weatherData),
+                situation: getWeatherSituation(weather: weatherData),
+                hourlyForecast: getHourlyForecast(weather: weatherData),
+                weakForecast: getWeakForecast(weather: weatherData),
+                weatherInfo: getWeatherInfo(weather: weatherData))
     }
     
     private func getCurrentDegree(weather data: WeatherData) -> Int16 {

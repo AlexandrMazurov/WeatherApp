@@ -136,13 +136,6 @@
 			path = CoreDataProperties;
 			sourceTree = "<group>";
 		};
-		4B37AFEC2468576C005777B5 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		4B37AFED246857DD005777B5 /* DateManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +233,6 @@
 				4BCD275E2466F711001678BC /* Weather */,
 				4B22F0822466EDEF00D1CE10 /* ManagedObjects */,
 				4BEE0D022465CD3B00F898C6 /* Api */,
-				4B37AFEC2468576C005777B5 /* New Group */,
 			);
 			path = Models;
 			sourceTree = "<group>";

@@ -16,4 +16,9 @@ class WeatherInfo {
         self.name = name
         self.value = value
     }
+    
+    init(managedInfo: WeatherInfoManagedObject) {
+        self.name = managedInfo.name ?? ""
+        self.value = managedInfo.value ?? ""
+    }
 }

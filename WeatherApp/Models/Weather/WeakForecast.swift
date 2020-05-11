@@ -23,4 +23,11 @@ class WeakForecast {
         self.minTemperature = minTemperature
         self.maxTemperature = maxTemperature
     }
+    
+    init(managedForecast: WeakForecastManagedObject) {
+        self.dayName = managedForecast.dayName ?? ""
+        self.imageName = managedForecast.image ?? ""
+        self.minTemperature = managedForecast.nightDegree
+        self.maxTemperature = managedForecast.dayDegree
+    }
 }

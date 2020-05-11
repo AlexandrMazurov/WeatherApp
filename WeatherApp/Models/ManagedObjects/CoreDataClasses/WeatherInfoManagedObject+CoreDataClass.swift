@@ -12,5 +12,9 @@ import CoreData
 
 @objc(WeatherInfoManagedObject)
 public class WeatherInfoManagedObject: NSManagedObject {
-
+    
+    func fill(with weatherInfo: WeatherInfo) {
+        self.name = weatherInfo.name
+        self.value = weatherInfo.value
+    }
 }

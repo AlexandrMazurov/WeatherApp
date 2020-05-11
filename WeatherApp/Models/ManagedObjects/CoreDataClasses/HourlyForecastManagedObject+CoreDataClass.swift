@@ -13,4 +13,9 @@ import CoreData
 @objc(HourlyForecastManagedObject)
 public class HourlyForecastManagedObject: NSManagedObject {
 
+    func fill(with hourlyForecast: HourlyForecast) {
+        self.time = hourlyForecast.time
+        self.imageName = hourlyForecast.imageName
+        self.degree = hourlyForecast.degree
+    }
 }

@@ -18,4 +18,10 @@ class HourlyForecast {
         self.imageName = imageName
         self.degree = degree
     }
+    
+    init(managedForecast: HourlyForecastManagedObject) {
+        self.time = managedForecast.time ?? ""
+        self.imageName = managedForecast.imageName ?? ""
+        self.degree = managedForecast.degree ?? ""
+    }
 }

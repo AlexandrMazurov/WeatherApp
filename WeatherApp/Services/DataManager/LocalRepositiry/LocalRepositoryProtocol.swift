@@ -9,6 +9,6 @@
 import Foundation
 
 protocol LocalRepositoryProtocol {
-    
-    
+    func getCurrentLocationWeather() -> Weather?
+    func saveCurrenLocationWeather(weather: Weather)
 }

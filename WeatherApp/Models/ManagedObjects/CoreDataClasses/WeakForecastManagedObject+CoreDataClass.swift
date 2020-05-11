@@ -12,5 +12,11 @@ import CoreData
 
 @objc(WeakForecastManagedObject)
 public class WeakForecastManagedObject: NSManagedObject {
-
+    
+    func fill(with weakForecast: WeakForecast) {
+        self.dayName = weakForecast.dayName
+        self.image = weakForecast.imageName
+        self.dayDegree = weakForecast.maxTemperature
+        self.nightDegree = weakForecast.minTemperature
+    }
 }

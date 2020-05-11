@@ -16,13 +16,21 @@ extension WeatherManagedObject {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<WeatherManagedObject> {
         return NSFetchRequest<WeatherManagedObject>(entityName: "WeatherManagedObject")
     }
-
+    
+    @nonobjc public class func fetchCurrentLocationWeatherRequest() -> NSFetchRequest<WeatherManagedObject> {
+        let currenLocationWeatherRequest = NSFetchRequest<WeatherManagedObject>(entityName: "WeatherManagedObject")
+        let predicate = NSPredicate(format: "isCurrentLocation == %d", NSNumber(booleanLiteral: true))
+        currenLocationWeatherRequest.predicate = predicate
+        return currenLocationWeatherRequest
+    }
+    
+    @NSManaged public var isCurrentLocation: NSNumber?
     @NSManaged public var cityName: String?
     @NSManaged public var degree: Int16
     @NSManaged public var situation: String?
-    @NSManaged public var hourlyForecast: NSSet?
-    @NSManaged public var weakForecast: NSSet?
-    @NSManaged public var weatherInfo: NSSet?
+    @NSManaged public var hourlyForecast: NSOrderedSet?
+    @NSManaged public var weakForecast: NSOrderedSet?
+    @NSManaged public var weatherInfo: NSOrderedSet?
 
 }
 
@@ -53,10 +61,10 @@ extension WeatherManagedObject {
     @NSManaged public func removeFromWeakForecast(_ value: WeakForecastManagedObject)
 
     @objc(addWeakForecast:)
-    @NSManaged public func addToWeakForecast(_ values: NSSet)
+    @NSManaged public func addToWeakForecast(_ values: NSOrderedSet)
 
     @objc(removeWeakForecast:)
-    @NSManaged public func removeFromWeakForecast(_ values: NSSet)
+    @NSManaged public func removeFromWeakForecast(_ values: NSOrderedSet)
 
 }
 
