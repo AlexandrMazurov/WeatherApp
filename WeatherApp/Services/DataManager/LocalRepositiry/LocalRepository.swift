@@ -24,28 +24,38 @@ class LocalRepository: LocalRepositoryProtocol {
     
     func getCurrentLocationWeather() -> Weather? {
         let context = persistentContainer.newBackgroundContext()
-        var resultWeatherManagedObject: WeatherManagedObject?
-        let weatherManagedObjectRequest: NSFetchRequest<WeatherManagedObject> = WeatherManagedObject.fetchRequest()
-        do {
-            resultWeatherManagedObject = try context.fetch(weatherManagedObjectRequest).first
-        } catch {
-            print(error)
-        }
-        guard let managedResult = resultWeatherManagedObject else {
+        guard let weatherManagedObject = getCurrentWeatherManagedObject(context: context) else {
             return nil
         }
-        return Weather(managedWeather: managedResult)
+        return Weather(managedWeather: weatherManagedObject)
     }
     
-    func saveCurrenLocationWeather(weather: Weather) {
+    func updateWeatherInCurrentLocation(_ weather: Weather) {
+        let updateContext = persistentContainer.newBackgroundContext()
+        guard let currentLocationManagedObject = getCurrentWeatherManagedObject(context: updateContext) else {
+            saveCurrenLocationWeather(weather: weather)
+            return
+        }
+        currentLocationManagedObject.fill(with: weather, context: updateContext)
+        saveContext(updateContext)
+    }
+    
+    private func saveCurrenLocationWeather(weather: Weather) {
         let saveBacgroundContext = persistentContainer.newBackgroundContext()
         let weatherManagedObject = WeatherManagedObject(context: saveBacgroundContext)
         weatherManagedObject.fill(with: weather, context: saveBacgroundContext)
         saveContext(saveBacgroundContext)
     }
     
-    func updateWeatherInCurrentLocation(_ weather: Weather) {
-        
+    private func getCurrentWeatherManagedObject(context: NSManagedObjectContext) -> WeatherManagedObject? {
+        var resultWeatherManagedObject: WeatherManagedObject?
+        let weatherManagedObjectRequest: NSFetchRequest<WeatherManagedObject> = WeatherManagedObject.fetchCurrentLocationWeatherRequest()
+        do {
+            resultWeatherManagedObject = try context.fetch(weatherManagedObjectRequest).first
+        } catch {
+            print(error)
+        }
+        return resultWeatherManagedObject
     }
     
     private func saveContext(_ context: NSManagedObjectContext) {

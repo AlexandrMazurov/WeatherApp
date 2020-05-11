@@ -10,5 +10,5 @@ import Foundation
 
 protocol LocalRepositoryProtocol {
     func getCurrentLocationWeather() -> Weather?
-    func saveCurrenLocationWeather(weather: Weather)
+    func updateWeatherInCurrentLocation(_ weather: Weather)
 }

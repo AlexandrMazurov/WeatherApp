@@ -19,7 +19,7 @@ extension WeatherManagedObject {
     
     @nonobjc public class func fetchCurrentLocationWeatherRequest() -> NSFetchRequest<WeatherManagedObject> {
         let currenLocationWeatherRequest = NSFetchRequest<WeatherManagedObject>(entityName: "WeatherManagedObject")
-        let predicate = NSPredicate(format: "isCurrentLocation == %d", NSNumber(booleanLiteral: true))
+        let predicate = NSPredicate(format: "isCurrentLocation == %d", true)
         currenLocationWeatherRequest.predicate = predicate
         return currenLocationWeatherRequest
     }
