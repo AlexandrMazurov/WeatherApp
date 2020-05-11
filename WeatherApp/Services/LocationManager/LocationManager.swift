@@ -45,6 +45,4 @@ class LocationManager: NSObject, LocationManagerProtocol, CLLocationManagerDeleg
         longitude = location.longitude.description
         NotificationCenter.default.post(name: .locationAvailable, object: nil)
     }
-    
-    
 }

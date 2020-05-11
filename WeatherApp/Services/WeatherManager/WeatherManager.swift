@@ -19,6 +19,10 @@ private enum Constants {
     static let windSpeedParameterName = "Wind"
     static let sunRiseParameterName = "Sunrise"
     static let suncSetParameterName = "Sunset"
+    static let procentSign = "%"
+    static let celsionSign = "°C"
+    static let kilometersPerHourSign = "km/h"
+    static let hPascalSigh = "hPa"
 }
 
 class WeatherManager: WeatherManagerProtocol {
@@ -90,18 +94,17 @@ class WeatherManager: WeatherManagerProtocol {
     private func getWeatherInfo(weather data: WeatherData) -> [WeatherInfo] {
         return [
             WeatherInfo(name: Constants.feelsLikeParameterName,
-                        value: "\(convertKelvinToCelsion(kelvin: data.list.first?.main.feelsLike)) °C"),
+                        value: "\(convertKelvinToCelsion(kelvin: data.list.first?.main.feelsLike)) \(Constants.celsionSign)"),
             WeatherInfo(name: Constants.humidityParameterName,
-                        value: "\(data.list.first?.main.humidity.description ?? "") %"),
+                        value: "\(data.list.first?.main.humidity.description ?? "") \(Constants.procentSign)"),
             WeatherInfo(name: Constants.pressureParameterName,
-                        value: "\(data.list.first?.main.pressure.description ?? "") hPa"),
+                        value: "\(data.list.first?.main.pressure.description ?? "") \(Constants.hPascalSigh)"),
             WeatherInfo(name: Constants.windSpeedParameterName,
-                        value: "\(Int16(data.list.first?.wind.speed ?? .zero)) km/h"),
+                        value: "\(Int16(data.list.first?.wind.speed ?? .zero)) \(Constants.kilometersPerHourSign)"),
             WeatherInfo(name: Constants.sunRiseParameterName,
                         value: dateManager.getDefaultTimeFormat(from: TimeInterval(data.city.sunRise))),
             WeatherInfo(name: Constants.suncSetParameterName,
                         value: dateManager.getDefaultTimeFormat(from: TimeInterval(data.city.sunSet)))
-            
         ]
     }
     

@@ -36,8 +36,6 @@
 		4BEE0CEB24654EF100F898C6 /* WeatherManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CEA24654EF100F898C6 /* WeatherManagerProtocol.swift */; };
 		4BEE0CEE24654F5C00F898C6 /* LocalRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CED24654F5C00F898C6 /* LocalRepositoryProtocol.swift */; };
 		4BEE0CF024654F6700F898C6 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CEF24654F6700F898C6 /* LocalRepository.swift */; };
-		4BEE0CF224654F9B00F898C6 /* RemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CF124654F9B00F898C6 /* RemoteRepository.swift */; };
-		4BEE0CF424654FA800F898C6 /* RemoteRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CF324654FA800F898C6 /* RemoteRepositoryProtocol.swift */; };
 		4BEE0CF62465500C00F898C6 /* ApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CF52465500C00F898C6 /* ApiProtocol.swift */; };
 		4BEE0CF82465503D00F898C6 /* OpenWeatherMapApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CF72465503D00F898C6 /* OpenWeatherMapApi.swift */; };
 		4BEE0CFB246552EA00F898C6 /* URLEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE0CFA246552EA00F898C6 /* URLEndpoint.swift */; };
@@ -81,8 +79,6 @@
 		4BEE0CEA24654EF100F898C6 /* WeatherManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManagerProtocol.swift; sourceTree = "<group>"; };
 		4BEE0CED24654F5C00F898C6 /* LocalRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4BEE0CEF24654F6700F898C6 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
-		4BEE0CF124654F9B00F898C6 /* RemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepository.swift; sourceTree = "<group>"; };
-		4BEE0CF324654FA800F898C6 /* RemoteRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4BEE0CF52465500C00F898C6 /* ApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocol.swift; sourceTree = "<group>"; };
 		4BEE0CF72465503D00F898C6 /* OpenWeatherMapApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapApi.swift; sourceTree = "<group>"; };
 		4BEE0CFA246552EA00F898C6 /* URLEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEndpoint.swift; sourceTree = "<group>"; };
@@ -222,7 +218,7 @@
 				4B37AFF224687A66005777B5 /* LocationManager */,
 				4B37AFED246857DD005777B5 /* DateManager */,
 				4BEE0CE724654EA400F898C6 /* WeatherManager */,
-				4BEE0CE624654E8800F898C6 /* DataManager */,
+				4BEE0CE624654E8800F898C6 /* DataLayer */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -237,31 +233,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4BEE0CE424654E0400F898C6 /* LocalRepositiry */ = {
+		4BEE0CE624654E8800F898C6 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
 				4BEE0CEF24654F6700F898C6 /* LocalRepository.swift */,
 				4BEE0CED24654F5C00F898C6 /* LocalRepositoryProtocol.swift */,
 			);
-			path = LocalRepositiry;
-			sourceTree = "<group>";
-		};
-		4BEE0CE524654E1700F898C6 /* RemoteRepository */ = {
-			isa = PBXGroup;
-			children = (
-				4BEE0CF124654F9B00F898C6 /* RemoteRepository.swift */,
-				4BEE0CF324654FA800F898C6 /* RemoteRepositoryProtocol.swift */,
-			);
-			path = RemoteRepository;
-			sourceTree = "<group>";
-		};
-		4BEE0CE624654E8800F898C6 /* DataManager */ = {
-			isa = PBXGroup;
-			children = (
-				4BEE0CE424654E0400F898C6 /* LocalRepositiry */,
-				4BEE0CE524654E1700F898C6 /* RemoteRepository */,
-			);
-			path = DataManager;
+			path = DataLayer;
 			sourceTree = "<group>";
 		};
 		4BEE0CE724654EA400F898C6 /* WeatherManager */ = {
@@ -417,13 +395,11 @@
 				4BEE0D072465CF6C00F898C6 /* WeatherInfoData.swift in Sources */,
 				4B22F0922466EE1200D1CE10 /* WeatherInfoManagedObject+CoreDataProperties.swift in Sources */,
 				4BEE0CEB24654EF100F898C6 /* WeatherManagerProtocol.swift in Sources */,
-				4BEE0CF424654FA800F898C6 /* RemoteRepositoryProtocol.swift in Sources */,
 				4BEE0CE924654EE300F898C6 /* WeatherManager.swift in Sources */,
 				4B63C3DA2469319C0027011C /* Notification.Name.swift in Sources */,
 				4BEE0CCC246549FD00F898C6 /* AppDelegate.swift in Sources */,
 				4BEE0D012465CD2800F898C6 /* CityData.swift in Sources */,
 				4BEE0D052465CF5F00F898C6 /* ForecastInfoData.swift in Sources */,
-				4BEE0CF224654F9B00F898C6 /* RemoteRepository.swift in Sources */,
 				4B22F08E2466EE1200D1CE10 /* WeakForecastManagedObject+CoreDataProperties.swift in Sources */,
 				4BCD27682467F14C001678BC /* TimesOfDay.swift in Sources */,
 				4BEE0CFF2465CD1B00F898C6 /* ForecastData.swift in Sources */,

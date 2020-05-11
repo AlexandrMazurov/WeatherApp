@@ -40,6 +40,4 @@ class DateManager: DateManagerProtocol {
         let startOfDay = Calendar.current.startOfDay(for: Date(timeIntervalSince1970: interval))
         return formatter.string(from: interval - startOfDay.timeIntervalSince1970) ?? ""
     }
-    
-    
 }
