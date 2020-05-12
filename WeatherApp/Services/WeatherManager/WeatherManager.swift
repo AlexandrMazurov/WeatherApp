@@ -19,6 +19,7 @@ private enum Constants {
     static let windSpeedParameterName = "Wind"
     static let sunRiseParameterName = "Sunrise"
     static let suncSetParameterName = "Sunset"
+    static let degreeSign = "°"
     static let procentSign = "%"
     static let celsionSign = "°C"
     static let kilometersPerHourSign = "km/h"
@@ -77,7 +78,7 @@ class WeatherManager: WeatherManagerProtocol {
         Array(data.list.compactMap {
             HourlyForecast(time: dateManager.getHourTimeFormat(from: TimeInterval($0.time)),
                            imageName: $0.weather.first?.icon ?? "",
-                           degree: convertKelvinToCelsion(kelvin: $0.main.temperature).description)
+                           degree: "\(convertKelvinToCelsion(kelvin: $0.main.temperature)) \(Constants.degreeSign)")
             }[..<Constants.numberForecastsInDay])
     }
     

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol WeatherInfoViewProtocol: class {
-
+    func reloadData(with weather: Weather?)
 }

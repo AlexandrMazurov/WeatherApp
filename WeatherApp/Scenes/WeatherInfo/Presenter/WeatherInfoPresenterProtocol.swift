@@ -9,5 +9,7 @@
 import Foundation
 
 protocol WeatherInfoPresenterProtocol {
-    
+    func handleViewDidLoad()
+    func numberOfHourForecasts() -> Int
+    func hourForecast(for indexPath: IndexPath) -> HourlyForecast?
 }

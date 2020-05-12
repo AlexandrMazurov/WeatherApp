@@ -25,7 +25,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaI-XO-NsO">
-                                                        <rect key="frame" x="10" y="60" width="394" height="40"/>
+                                                        <rect key="frame" x="10" y="80" width="394" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="xQu-8W-O3h"/>
                                                         </constraints>
@@ -34,16 +34,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSp-Mg-vpB">
-                                                        <rect key="frame" x="10" y="144" width="394" height="60"/>
+                                                        <rect key="frame" x="10" y="164" width="394" height="80"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="Xbk-id-b60"/>
+                                                            <constraint firstAttribute="height" constant="80" id="Xbk-id-b60"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oae-FT-QnI">
-                                                        <rect key="frame" x="10" y="108" width="394" height="21"/>
+                                                        <rect key="frame" x="10" y="128" width="394" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="enN-Tc-kos"/>
                                                         </constraints>
@@ -60,7 +60,7 @@
                                                     <constraint firstItem="wSp-Mg-vpB" firstAttribute="top" secondItem="oae-FT-QnI" secondAttribute="bottom" constant="15" id="Tu1-xH-eFt"/>
                                                     <constraint firstItem="wSp-Mg-vpB" firstAttribute="leading" secondItem="efp-mm-Gj4" secondAttribute="leading" constant="10" id="XTb-0Q-dlz"/>
                                                     <constraint firstAttribute="trailing" secondItem="NaI-XO-NsO" secondAttribute="trailing" constant="10" id="Xy3-Oh-XEa"/>
-                                                    <constraint firstItem="NaI-XO-NsO" firstAttribute="top" secondItem="efp-mm-Gj4" secondAttribute="top" constant="60" id="Y6q-Mp-Nuf"/>
+                                                    <constraint firstItem="NaI-XO-NsO" firstAttribute="top" secondItem="efp-mm-Gj4" secondAttribute="top" constant="80" id="Y6q-Mp-Nuf"/>
                                                     <constraint firstItem="oae-FT-QnI" firstAttribute="top" secondItem="NaI-XO-NsO" secondAttribute="bottom" constant="8" id="ffG-JJ-oGo"/>
                                                     <constraint firstItem="oae-FT-QnI" firstAttribute="leading" secondItem="efp-mm-Gj4" secondAttribute="leading" constant="10" id="fft-hh-lNU"/>
                                                     <constraint firstAttribute="trailing" secondItem="wSp-Mg-vpB" secondAttribute="trailing" constant="10" id="gc5-GO-K4A"/>
@@ -69,7 +69,6 @@
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pcd-I3-NVY">
                                                 <rect key="frame" x="0.0" y="300" width="414" height="552"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="5gB-OX-DYO"/>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="p4C-sl-TE4"/>
@@ -115,6 +114,7 @@
                         <outlet property="contentScrollView" destination="Mf1-cA-QtR" id="Zss-XC-Xoe"/>
                         <outlet property="degreeLabel" destination="wSp-Mg-vpB" id="gRx-5K-pXp"/>
                         <outlet property="weatherCituationName" destination="oae-FT-QnI" id="gpT-Sd-PzV"/>
+                        <outlet property="weatherInfoTableView" destination="Pcd-I3-NVY" id="Ehi-Dh-uEr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
