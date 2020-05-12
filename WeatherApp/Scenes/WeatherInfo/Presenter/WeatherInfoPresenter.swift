@@ -57,7 +57,6 @@ class WeatherInfoPresenter {
     @objc
     private func didLocationAvailable() {
         updateCurrentLocationWeather()
-        //removeObservers()
     }
 }
 
@@ -77,5 +76,7 @@ extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
         return weatherData?.hourlyForecast[indexPath.row]
     }
     
-    
+    func weakForecast(for indexPath: IndexPath) -> WeakForecast? {
+        return weatherData?.weakForecast[indexPath.row]
+    }
 }

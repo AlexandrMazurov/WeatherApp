@@ -12,4 +12,5 @@ protocol WeatherInfoPresenterProtocol {
     func handleViewDidLoad()
     func numberOfHourForecasts() -> Int
     func hourForecast(for indexPath: IndexPath) -> HourlyForecast?
+    func weakForecast(for indexPath: IndexPath) -> WeakForecast?
 }

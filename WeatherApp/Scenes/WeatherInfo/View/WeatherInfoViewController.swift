@@ -24,16 +24,34 @@ class WeatherInfoViewController: UIViewController {
         super.viewDidLoad()
         presenter = WeatherInfoPresenter(view: self)
         presenter?.handleViewDidLoad()
-        
+        setupViewSettings()
+    }
+    
+    private func setupViewSettings() {
+        setupHourlyForecastCollectionView()
+        registerCells()
+    }
+    
+    private func setupHourlyForecastCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         hourlyForecastCollectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: flowLayout)
-        hourlyForecastCollectionView?.register(UINib(nibName: "HourForecastCell", bundle: Bundle.main), forCellWithReuseIdentifier: "HourForecastCell")
         hourlyForecastCollectionView?.delegate = self
         hourlyForecastCollectionView?.dataSource = self
         hourlyForecastCollectionView?.showsHorizontalScrollIndicator = false
-        
-        hourlyForecastCollectionView?.backgroundColor = .clear
+        hourlyForecastCollectionView?.backgroundColor = .white
+    }
+    
+    private func registerCells() {
+        hourlyForecastCollectionView?.register(UINib(nibName: "HourForecastCell",
+                                                     bundle: Bundle.main),
+                                               forCellWithReuseIdentifier: "HourForecastCell")
+        weatherInfoTableView.register(UINib(nibName: "WeakForecastCell",
+                                            bundle: Bundle.main),
+                                      forCellReuseIdentifier: "WeakForecastCell")
+        weatherInfoTableView.register(UINib(nibName: "WeatherInfoCell",
+                                            bundle: Bundle.main),
+                                      forCellReuseIdentifier: "WeatherInfoCell")
     }
 }
 
@@ -65,14 +83,18 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
-            return UITableViewCell()
-        case 1:
+        case 0...4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeakForecastCell", for: indexPath) as? WeakForecastCell else {
+                fatalError("Cell for row at \(indexPath) fails to cast to weak forecast cell")
+            }
+            cell.configure(with: presenter?.weakForecast(for: indexPath))
+            return cell
+        case 5...8:
             return UITableViewCell()
         default:
             return UITableViewCell()
@@ -81,12 +103,12 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-        case 0:
-            return 150
-        case 1:
-            return 150
+        case 0...4:
+            return 40
+        case 5...8:
+            return 80
         default:
-            return 2
+            return .zero
         }
     }
 }

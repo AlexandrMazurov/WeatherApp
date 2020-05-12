@@ -14,7 +14,7 @@ class OpenWeatherMapApi: ApiProtocol {
         guard let url = URL(string: URLEndpoint
             .getWeatherForecast(latitude: lat,
                                 longitude: lon,
-                                apiKey: "2e0254193f6b563ad2bfdee9b187c823")) else { return }
+                                apiKey: "")) else { return }
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, error) in
             guard let data = data else {

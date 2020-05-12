@@ -9,16 +9,16 @@
 import UIKit
 
 class WeakForecastCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet private weak var dayNameLabel: UILabel!
+    @IBOutlet private weak var weatherImageView: UIImageView!
+    @IBOutlet private weak var maxTemperatureLabel: UILabel!
+    @IBOutlet private weak var minTemperatureLabel: UILabel!
+    
+    func configure(with forecast: WeakForecast?) {
+        self.dayNameLabel.text = forecast?.dayName
+        self.weatherImageView.image = UIImage(named: forecast?.imageName ?? "")
+        self.maxTemperatureLabel.text = "\(forecast?.maxTemperature ?? .zero)°"
+        self.minTemperatureLabel.text = "\(forecast?.minTemperature ?? .zero)°"
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
