@@ -31,10 +31,12 @@ class WeatherManager: WeatherManagerProtocol {
     private let dateManager: DateManagerProtocol
     private let locationManager: LocationManagerProtocol
     
-    init() {
-        self.api = OpenWeatherMapApi()
-        self.dateManager = DateManager()
-        self.locationManager = LocationManager()
+    init(api: ApiProtocol,
+         dateManager: DateManagerProtocol,
+         locationManager: LocationManagerProtocol) {
+        self.api = api
+        self.dateManager = dateManager
+        self.locationManager = locationManager
     }
     
     func getWeatherAtCurrentLocation(completion: @escaping (Result<Weather?, Error>) -> Void)  {

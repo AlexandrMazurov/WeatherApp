@@ -22,15 +22,17 @@ private enum Constants {
 class WeatherInfoPresenter {
     
     private unowned let view: WeatherInfoViewProtocol
-    private var weatherManager: WeatherManagerProtocol?
-    private var localRepository: LocalRepositoryProtocol?
+    private var weatherManager: WeatherManagerProtocol
+    private var localRepository: LocalRepositoryProtocol
     private var weatherData: Weather?
     
     
-    init(view: WeatherInfoViewProtocol) {
+    init(view: WeatherInfoViewProtocol,
+         weatherManager: WeatherManagerProtocol,
+         localRepository: LocalRepositoryProtocol) {
         self.view = view
-        self.weatherManager = WeatherManager()
-        self.localRepository = LocalRepository()
+        self.weatherManager = weatherManager
+        self.localRepository = localRepository
     }
     
     deinit {
@@ -52,14 +54,14 @@ class WeatherInfoPresenter {
     }
     
     private func updateCurrentLocationWeather() {
-        weatherManager?.getWeatherAtCurrentLocation { [weak self] result in
+        weatherManager.getWeatherAtCurrentLocation { [weak self] result in
             switch result {
             case .success(let weather):
                 guard let weather = weather else {
                     return
                 }
                 DispatchQueue.main.async {
-                    self?.localRepository?.updateWeatherInCurrentLocation(weather)
+                    self?.localRepository.updateWeatherInCurrentLocation(weather)
                     self?.weatherData = weather
                     self?.view.reloadData(with: weather)
                 }
@@ -102,7 +104,7 @@ extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
         
     func handleViewDidLoad() {
         setupObservers()
-        weatherData = localRepository?.getCurrentLocationWeather()
+        weatherData = localRepository.getCurrentLocationWeather()
         view.reloadData(with: weatherData)
     }
     

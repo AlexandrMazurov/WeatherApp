@@ -30,11 +30,16 @@ class WeatherInfoViewController: UIViewController {
     
     private var hourlyForecastView: HourlyForecastView?
     
-    private var presenter: WeatherInfoPresenterProtocol?
+    var presenter: WeatherInfoPresenterProtocol! {
+        didSet {
+            guard oldValue == nil else {
+                fatalError("Presenter can be set only once -- during assembling \(self.description)")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = WeatherInfoPresenter(view: self)
         setupViewSettings()
         presenter?.handleViewDidLoad()
     }
