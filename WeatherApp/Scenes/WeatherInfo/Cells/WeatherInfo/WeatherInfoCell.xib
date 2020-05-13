@@ -17,8 +17,10 @@
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="D11-ct-xoI">
                         <rect key="frame" x="0.0" y="0.0" width="466" height="118"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="D11-ct-xoI" secondAttribute="bottom" id="DBw-2W-JlH"/>
                     <constraint firstItem="D11-ct-xoI" firstAttribute="top" secondItem="BG2-pp-wNY" secondAttribute="top" id="ZFr-5Z-sqd"/>
@@ -26,6 +28,7 @@
                     <constraint firstAttribute="trailing" secondItem="D11-ct-xoI" secondAttribute="trailing" id="vOb-kz-0ws"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="weatherInfoStackView" destination="D11-ct-xoI" id="Abv-7D-utK"/>
             </connections>

@@ -30,6 +30,7 @@ class WeatherInfoViewController: UIViewController {
     private func setupViewSettings() {
         setupHourlyForecastCollectionView()
         registerCells()
+        weatherInfoTableView.allowsSelection = false
     }
     
     private func setupHourlyForecastCollectionView() {
@@ -39,7 +40,7 @@ class WeatherInfoViewController: UIViewController {
         hourlyForecastCollectionView?.delegate = self
         hourlyForecastCollectionView?.dataSource = self
         hourlyForecastCollectionView?.showsHorizontalScrollIndicator = false
-        hourlyForecastCollectionView?.backgroundColor = .white
+        hourlyForecastCollectionView?.backgroundColor = #colorLiteral(red: 0.3137254902, green: 0.7215686275, blue: 1, alpha: 1)
     }
     
     private func registerCells() {
@@ -143,23 +144,5 @@ extension WeatherInfoViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 60, height: collectionView.frame.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
     }
 }
