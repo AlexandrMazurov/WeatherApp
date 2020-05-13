@@ -58,10 +58,18 @@ class WeatherInfoPresenter {
     private func didLocationAvailable() {
         updateCurrentLocationWeather()
     }
+    
+    private func numberOfWeakForecast() -> Int {
+        return weatherData?.weakForecast.count ?? .zero
+    }
+    
+    private func numberOfInfoSections() -> Int {
+        return (weatherData?.weatherInfo.count ?? .zero) / 2
+    }
 }
 
 extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
-
+        
     func handleViewDidLoad() {
         setupObservers()
         weatherData = localRepository?.getCurrentLocationWeather()
@@ -79,4 +87,24 @@ extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
     func weakForecast(for indexPath: IndexPath) -> WeakForecast? {
         return weatherData?.weakForecast[indexPath.row]
     }
+    
+    func weatherInfo(for indexPath: IndexPath) -> [WeatherInfo?] {
+        let elementPosition = indexPath.row * 2 - (weatherData?.weakForecast.count ?? .zero) * 2
+        let nextElemenPosition = elementPosition + 1
+        return [weatherData?.weatherInfo[elementPosition], weatherData?.weatherInfo[nextElemenPosition]]
+    }
+    
+    func numberOfInfoRows() -> Int {
+        return numberOfWeakForecast() + numberOfInfoSections()
+    }
+    
+    func weakForecastRange() -> ClosedRange<Int> {
+        return 0...(weatherData?.weakForecast.count ?? 1) - 1
+    }
+    
+    func weatherInfoRange() -> ClosedRange<Int> {
+        let startValue = weatherData?.weakForecast.count ?? .zero
+        return (startValue)...(startValue + (weatherData?.weatherInfo.count ?? 1)) - 1
+    }
+    
 }

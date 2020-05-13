@@ -22,13 +22,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQf-ol-GQC">
-                        <rect key="frame" x="10" y="5" width="162.5" height="73"/>
+                        <rect key="frame" x="16" y="5" width="156.5" height="73"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vXN-tj-agP">
-                        <rect key="frame" x="334" y="5" width="104" height="73"/>
+                        <rect key="frame" x="328" y="5" width="104" height="73"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmo-GV-Abr">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="73"/>
@@ -48,14 +48,14 @@
                 <constraints>
                     <constraint firstItem="vXN-tj-agP" firstAttribute="top" secondItem="Dxb-Rs-X2r" secondAttribute="top" constant="5" id="B3g-26-Kp6"/>
                     <constraint firstItem="WxB-Dg-8jG" firstAttribute="centerX" secondItem="Dxb-Rs-X2r" secondAttribute="centerX" constant="-10" id="DBU-E6-Y2u"/>
-                    <constraint firstItem="fQf-ol-GQC" firstAttribute="leading" secondItem="Dxb-Rs-X2r" secondAttribute="leading" constant="10" id="HHv-3q-OnQ"/>
+                    <constraint firstItem="fQf-ol-GQC" firstAttribute="leading" secondItem="Dxb-Rs-X2r" secondAttribute="leading" constant="16" id="HHv-3q-OnQ"/>
                     <constraint firstItem="WxB-Dg-8jG" firstAttribute="top" secondItem="Dxb-Rs-X2r" secondAttribute="top" constant="5" id="K7W-di-oL5"/>
                     <constraint firstAttribute="bottom" secondItem="fQf-ol-GQC" secondAttribute="bottom" constant="5" id="V99-6L-B6X"/>
                     <constraint firstItem="WxB-Dg-8jG" firstAttribute="leading" secondItem="fQf-ol-GQC" secondAttribute="trailing" constant="5" id="VBr-Vs-H0X"/>
                     <constraint firstItem="fQf-ol-GQC" firstAttribute="top" secondItem="Dxb-Rs-X2r" secondAttribute="top" constant="5" id="ZW0-fr-GzZ"/>
                     <constraint firstItem="WxB-Dg-8jG" firstAttribute="centerY" secondItem="Dxb-Rs-X2r" secondAttribute="centerY" id="b7d-mg-bNw"/>
                     <constraint firstAttribute="bottom" secondItem="WxB-Dg-8jG" secondAttribute="bottom" constant="5" id="fmJ-KI-KaD"/>
-                    <constraint firstAttribute="trailing" secondItem="vXN-tj-agP" secondAttribute="trailing" constant="10" id="u1r-3S-Cyl"/>
+                    <constraint firstAttribute="trailing" secondItem="vXN-tj-agP" secondAttribute="trailing" constant="16" id="u1r-3S-Cyl"/>
                     <constraint firstItem="vXN-tj-agP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WxB-Dg-8jG" secondAttribute="trailing" constant="10" id="vnT-X0-D0A"/>
                     <constraint firstAttribute="bottom" secondItem="vXN-tj-agP" secondAttribute="bottom" constant="5" id="wXM-Ng-S5q"/>
                 </constraints>

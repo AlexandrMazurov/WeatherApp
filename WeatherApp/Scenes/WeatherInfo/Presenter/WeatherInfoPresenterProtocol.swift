@@ -13,4 +13,8 @@ protocol WeatherInfoPresenterProtocol {
     func numberOfHourForecasts() -> Int
     func hourForecast(for indexPath: IndexPath) -> HourlyForecast?
     func weakForecast(for indexPath: IndexPath) -> WeakForecast?
+    func weatherInfo(for indexPath: IndexPath) -> [WeatherInfo?]
+    func numberOfInfoRows() -> Int
+    func weakForecastRange() -> ClosedRange<Int>
+    func weatherInfoRange() -> ClosedRange<Int>
 }

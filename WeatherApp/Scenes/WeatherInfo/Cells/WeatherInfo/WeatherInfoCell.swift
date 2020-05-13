@@ -9,16 +9,17 @@
 import UIKit
 
 class WeatherInfoCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet private weak var weatherInfoStackView: UIStackView!
+    
+    func configure(with info: [WeatherInfo?]) {
+        weatherInfoStackView.arrangedSubviews.forEach {
+            $0.removeFromSuperview()
+        }
+        info.forEach {
+            let infoView = WeatherInfoItemView()
+            infoView.configure(with: $0)
+            weatherInfoStackView.addArrangedSubview(infoView)
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

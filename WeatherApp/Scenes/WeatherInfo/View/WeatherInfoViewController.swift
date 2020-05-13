@@ -23,8 +23,8 @@ class WeatherInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = WeatherInfoPresenter(view: self)
-        presenter?.handleViewDidLoad()
         setupViewSettings()
+        presenter?.handleViewDidLoad()
     }
     
     private func setupViewSettings() {
@@ -73,8 +73,6 @@ extension WeatherInfoViewController: UIScrollViewDelegate {
 extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        //customView.addSubview(hourlyForecastCollectionView ?? UIView())
         return hourlyForecastCollectionView
     }
     
@@ -83,30 +81,41 @@ extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return presenter?.numberOfInfoRows() ?? .zero
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let presenter = presenter else {
+            fatalError("Presenter is not resolved")
+        }
         switch indexPath.row {
-        case 0...4:
+        case presenter.weakForecastRange():
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeakForecastCell", for: indexPath) as? WeakForecastCell else {
                 fatalError("Cell for row at \(indexPath) fails to cast to weak forecast cell")
             }
-            cell.configure(with: presenter?.weakForecast(for: indexPath))
+            cell.configure(with: presenter.weakForecast(for: indexPath))
             return cell
-        case 5...8:
-            return UITableViewCell()
+        case presenter.weatherInfoRange():
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherInfoCell", for: indexPath) as? WeatherInfoCell else {
+                fatalError("Cell for row at \(indexPath) fails to cast to info cell")
+            }
+            cell.configure(with: presenter.weatherInfo(for: indexPath))
+            return cell
+
         default:
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let presenter = presenter else {
+            return .zero
+        }
         switch indexPath.row {
-        case 0...4:
+        case presenter.weakForecastRange():
             return 40
-        case 5...8:
-            return 80
+        case presenter.weatherInfoRange():
+            return 60
         default:
             return .zero
         }
