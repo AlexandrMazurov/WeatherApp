@@ -13,6 +13,10 @@ private enum Constants {
     static let numberOfInfoSectionsInRow = 2
     static let arrayIndexDifference = 1
     static let nextArrayIterrationStep = 1
+    static let errorConnectionTitle = "Connection Error"
+    static let errorConnectionMessage = "Please, check internet connection"
+    static let errorLocationTitle = "Erorr getting location"
+    static let errorLocationMessage = "Please enable location in settings"
 }
 
 class WeatherInfoPresenter {
@@ -37,10 +41,14 @@ class WeatherInfoPresenter {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(didLocationAvailable),
                                                name: .locationAvailable, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(errorGettingLocationAction),
+                                               name: .errorGettingLocation, object: nil)
     }
     
     private func removeObservers() {
         NotificationCenter.default.removeObserver(self, name: .locationAvailable, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .errorGettingLocation, object: nil)
     }
     
     private func updateCurrentLocationWeather() {
@@ -55,8 +63,11 @@ class WeatherInfoPresenter {
                     self?.weatherData = weather
                     self?.view.reloadData(with: weather)
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.view.showErrorConnectionAllert(title: Constants.errorConnectionTitle,
+                                                         message: Constants.errorConnectionMessage)
+                }
             }
         }
     }
@@ -64,6 +75,12 @@ class WeatherInfoPresenter {
     @objc
     private func didLocationAvailable() {
         updateCurrentLocationWeather()
+    }
+    
+    @objc
+    private func errorGettingLocationAction() {
+        view.showLocationErrorAllert(title: Constants.errorLocationTitle,
+                                     message: Constants.errorLocationMessage)
     }
     
     private func numberOfWeakForecast() -> Int {
@@ -102,7 +119,7 @@ extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
     }
     
     func weatherInfo(for indexPath: IndexPath) -> [WeatherInfo?] {
-        let elementPosition = indexPath.row - numberOfWeakForecast()
+        let elementPosition = indexPath.row * 2 - numberOfWeakForecast() * 2
         let nextElemenPosition = elementPosition + Constants.nextArrayIterrationStep
         return [weatherData?.weatherInfo[elementPosition], weatherData?.weatherInfo[nextElemenPosition]]
     }

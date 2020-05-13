@@ -87,6 +87,14 @@ extension WeatherInfoViewController: WeatherInfoViewProtocol {
         hourlyForecastCollectionView?.reloadData()
         weatherInfoTableView.reloadData()
     }
+    
+    func showErrorConnectionAllert(title: String, message: String) {
+        showOKAlert(title: title, message: message)
+    }
+    
+    func showLocationErrorAllert(title: String, message: String) {
+        showLocationSettingsAllert(title: title, message: message)
+    }
 }
 
 extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource {

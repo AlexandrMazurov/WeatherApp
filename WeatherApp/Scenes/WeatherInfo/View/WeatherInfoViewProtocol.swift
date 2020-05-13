@@ -10,4 +10,6 @@ import Foundation
 
 protocol WeatherInfoViewProtocol: class {
     func reloadData(with weather: Weather?)
+    func showErrorConnectionAllert(title: String, message: String)
+    func showLocationErrorAllert(title: String, message: String)
 }

@@ -33,6 +33,7 @@
 		4B38D044246AAC4E0065B3F4 /* HourForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B38D043246AAC4E0065B3F4 /* HourForecastCell.xib */; };
 		4B38D048246AADF30065B3F4 /* HourForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38D047246AADF30065B3F4 /* HourForecastCell.swift */; };
 		4B63C3DA2469319C0027011C /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B63C3D92469319C0027011C /* Notification.Name.swift */; };
+		4BA8282C246BFA470004DBEB /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8282B246BFA470004DBEB /* UIViewController+Alerts.swift */; };
 		4BCD27602466F71A001678BC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD275F2466F71A001678BC /* Weather.swift */; };
 		4BCD27622466F72C001678BC /* WeakForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD27612466F72C001678BC /* WeakForecast.swift */; };
 		4BCD27642466F746001678BC /* HourlyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD27632466F746001678BC /* HourlyForecast.swift */; };
@@ -86,6 +87,7 @@
 		4B38D043246AAC4E0065B3F4 /* HourForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourForecastCell.xib; sourceTree = "<group>"; };
 		4B38D047246AADF30065B3F4 /* HourForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourForecastCell.swift; sourceTree = "<group>"; };
 		4B63C3D92469319C0027011C /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
+		4BA8282B246BFA470004DBEB /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		4BCD275F2466F71A001678BC /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4BCD27612466F72C001678BC /* WeakForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakForecast.swift; sourceTree = "<group>"; };
 		4BCD27632466F746001678BC /* HourlyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecast.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		4BCD276A24680378001678BC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4BA8282B246BFA470004DBEB /* UIViewController+Alerts.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				4B22F08B2466EE1200D1CE10 /* WeatherManagedObject+CoreDataClass.swift in Sources */,
 				4BEE0CFB246552EA00F898C6 /* URLEndpoint.swift in Sources */,
 				4BCD27642466F746001678BC /* HourlyForecast.swift in Sources */,
+				4BA8282C246BFA470004DBEB /* UIViewController+Alerts.swift in Sources */,
 				4B38D032246A92EA0065B3F4 /* WeatherInfoPresenter.swift in Sources */,
 				4BEE0CF024654F6700F898C6 /* LocalRepository.swift in Sources */,
 				4BEE0D072465CF6C00F898C6 /* WeatherInfoData.swift in Sources */,
@@ -683,7 +687,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.WeatherApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.WeatherApp1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -701,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-.WeatherApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.WeatherApp1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

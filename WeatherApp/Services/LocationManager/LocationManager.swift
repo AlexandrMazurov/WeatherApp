@@ -29,6 +29,8 @@ class LocationManager: NSObject, LocationManagerProtocol, CLLocationManagerDeleg
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error.localizedDescription)")
+        NotificationCenter.default.post(name: .errorGettingLocation, object: nil)
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
