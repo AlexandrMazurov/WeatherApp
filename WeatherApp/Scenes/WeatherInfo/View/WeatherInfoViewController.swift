@@ -12,29 +12,25 @@ private enum Constants {
     static let hourForecastCellIdentifier = "HourForecastCell"
     static let weakForecastCellIdentifier = "WeakForecastCell"
     static let weatherInfoCellIndentifier = "WeatherInfoCell"
-    static let todayString = "TODAY"
-    static let weatherInfoTableViewHeaderHeight: CGFloat = 110
+    static let weatherInfoTableViewHeaderHeight: CGFloat = 140
     static let weakForecastCellHeight: CGFloat = 40
     static let weatherInfoCellHeight: CGFloat = 60
     static let hourlyForecastCellWidth: CGFloat = 60
-    static let hourlyForecastCollectionViewBorderWidth: CGFloat = 0.16
+    static let weatherInfoTableViewHeight: CGFloat = 515
 }
 
 class WeatherInfoViewController: UIViewController {
     
-    @IBOutlet weak var contentScrollView: UIScrollView!
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var weatherCituationName: UILabel!
-    @IBOutlet weak var degreeLabel: UILabel!
-    @IBOutlet weak var weatherInfoTableView: UITableView!
-    @IBOutlet weak var dayNameLabel: UILabel!
-    @IBOutlet weak var todayNameLabel: UILabel!
-    @IBOutlet weak var maxTemperatureLabel: UILabel!
-    @IBOutlet weak var minTemperatureLabel: UILabel!
+    @IBOutlet private weak var contentScrollView: UIScrollView!
+    @IBOutlet private weak var cityNameLabel: UILabel!
+    @IBOutlet private weak var weatherCituationName: UILabel!
+    @IBOutlet private weak var degreeLabel: UILabel!
+    @IBOutlet private weak var weatherInfoTableView: UITableView!
+    @IBOutlet weak var weatherInfoTableViewHeightConstraint: NSLayoutConstraint!
     
-    var hourlyForecastCollectionView: UICollectionView?
+    private var hourlyForecastView: HourlyForecastView?
     
-    var presenter: WeatherInfoPresenterProtocol?
+    private var presenter: WeatherInfoPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,27 +40,17 @@ class WeatherInfoViewController: UIViewController {
     }
     
     private func setupViewSettings() {
-        setupHourlyForecastCollectionView()
+        weatherInfoTableViewHeightConstraint.constant = Constants.weatherInfoTableViewHeight
+        setupHourlyForecastView()
         registerCells()
         weatherInfoTableView.allowsSelection = false
     }
     
-    private func setupHourlyForecastCollectionView() {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        hourlyForecastCollectionView = UICollectionView(frame: CGRect(x: .zero, y: .zero, width: 0, height: .zero), collectionViewLayout: flowLayout)
-        hourlyForecastCollectionView?.delegate = self
-        hourlyForecastCollectionView?.dataSource = self
-        hourlyForecastCollectionView?.showsHorizontalScrollIndicator = false
-        hourlyForecastCollectionView?.backgroundColor = #colorLiteral(red: 0.3137254902, green: 0.7215686275, blue: 1, alpha: 1)
-        hourlyForecastCollectionView?.layer.borderColor = UIColor.white.cgColor
-        hourlyForecastCollectionView?.layer.borderWidth = Constants.hourlyForecastCollectionViewBorderWidth
+    private func setupHourlyForecastView() {
+        hourlyForecastView = HourlyForecastView()
     }
     
     private func registerCells() {
-        hourlyForecastCollectionView?.register(UINib(nibName: Constants.hourForecastCellIdentifier,
-                                                     bundle: Bundle.main),
-                                               forCellWithReuseIdentifier: Constants.hourForecastCellIdentifier)
         weatherInfoTableView.register(UINib(nibName: Constants.weakForecastCellIdentifier,
                                             bundle: Bundle.main),
                                       forCellReuseIdentifier: Constants.weakForecastCellIdentifier)
@@ -80,11 +66,9 @@ extension WeatherInfoViewController: WeatherInfoViewProtocol {
         self.cityNameLabel.text = weather?.cityName
         self.weatherCituationName.text = weather?.situation
         self.degreeLabel.text = "\(weather?.degree ?? .zero)°"
-        self.dayNameLabel.text = weather?.weakForecast.first?.dayName
-        self.todayNameLabel.text = Constants.todayString
-        self.maxTemperatureLabel.text = weather?.weakForecast.first?.maxTemperature.description
-        self.minTemperatureLabel.text = weather?.weakForecast.first?.minTemperature.description
-        hourlyForecastCollectionView?.reloadData()
+        hourlyForecastView?.configure(with: weather?.weakForecast.first,
+                                      delegateAndDataSourceOwner: self)
+        hourlyForecastView?.reloaData()
         weatherInfoTableView.reloadData()
     }
     
@@ -100,7 +84,7 @@ extension WeatherInfoViewController: WeatherInfoViewProtocol {
 extension WeatherInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return hourlyForecastCollectionView
+        return hourlyForecastView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -158,7 +142,7 @@ extension WeatherInfoViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = hourlyForecastCollectionView?.dequeueReusableCell(withReuseIdentifier: Constants.hourForecastCellIdentifier,
+        guard let cell = hourlyForecastView?.hourlyForecastCollectionView?.dequeueReusableCell(withReuseIdentifier: Constants.hourForecastCellIdentifier,
                                                                            for: indexPath) as? HourForecastCell else {
             fatalError("Cell for row at \(indexPath) fails to cast to hour forecast cell")
         }

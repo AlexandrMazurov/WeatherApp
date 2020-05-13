@@ -34,6 +34,8 @@
 		4B38D048246AADF30065B3F4 /* HourForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B38D047246AADF30065B3F4 /* HourForecastCell.swift */; };
 		4B63C3DA2469319C0027011C /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B63C3D92469319C0027011C /* Notification.Name.swift */; };
 		4BA8282C246BFA470004DBEB /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8282B246BFA470004DBEB /* UIViewController+Alerts.swift */; };
+		4BA82830246C47CB0004DBEB /* HourlyForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8282F246C47CB0004DBEB /* HourlyForecastView.swift */; };
+		4BA82832246C47E30004DBEB /* HourlyForecastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA82831246C47E30004DBEB /* HourlyForecastView.xib */; };
 		4BCD27602466F71A001678BC /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD275F2466F71A001678BC /* Weather.swift */; };
 		4BCD27622466F72C001678BC /* WeakForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD27612466F72C001678BC /* WeakForecast.swift */; };
 		4BCD27642466F746001678BC /* HourlyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCD27632466F746001678BC /* HourlyForecast.swift */; };
@@ -88,6 +90,8 @@
 		4B38D047246AADF30065B3F4 /* HourForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourForecastCell.swift; sourceTree = "<group>"; };
 		4B63C3D92469319C0027011C /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
 		4BA8282B246BFA470004DBEB /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
+		4BA8282F246C47CB0004DBEB /* HourlyForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastView.swift; sourceTree = "<group>"; };
+		4BA82831246C47E30004DBEB /* HourlyForecastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyForecastView.xib; sourceTree = "<group>"; };
 		4BCD275F2466F71A001678BC /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		4BCD27612466F72C001678BC /* WeakForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakForecast.swift; sourceTree = "<group>"; };
 		4BCD27632466F746001678BC /* HourlyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecast.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 		4B38D02C246A92780065B3F4 /* WeatherInfo */ = {
 			isa = PBXGroup;
 			children = (
+				4BA8282D246C47910004DBEB /* Views */,
 				4B38D035246AAB220065B3F4 /* Cells */,
 				4B38D02A246A925A0065B3F4 /* View */,
 				4B38D02B246A926D0065B3F4 /* Presenter */,
@@ -266,6 +271,23 @@
 				4B38D03D246AABE70065B3F4 /* WeatherInfoCell.swift */,
 			);
 			path = WeatherInfo;
+			sourceTree = "<group>";
+		};
+		4BA8282D246C47910004DBEB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4BA8282E246C479B0004DBEB /* HourlyForecastView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4BA8282E246C479B0004DBEB /* HourlyForecastView */ = {
+			isa = PBXGroup;
+			children = (
+				4BA8282F246C47CB0004DBEB /* HourlyForecastView.swift */,
+				4BA82831246C47E30004DBEB /* HourlyForecastView.xib */,
+			);
+			path = HourlyForecastView;
 			sourceTree = "<group>";
 		};
 		4BCD275E2466F711001678BC /* Weather */ = {
@@ -480,6 +502,7 @@
 				4B366B4C246B2CBD00A70299 /* WeatherInfoItemView.xib in Resources */,
 				4B38D03A246AABB40065B3F4 /* WeatherInfoCell.xib in Resources */,
 				4BEE0CDB246549FD00F898C6 /* LaunchScreen.storyboard in Resources */,
+				4BA82832246C47E30004DBEB /* HourlyForecastView.xib in Resources */,
 				4BEE0CD8246549FD00F898C6 /* Assets.xcassets in Resources */,
 				4B38D042246AAC3D0065B3F4 /* WeakForecastCell.xib in Resources */,
 				4BEE0CD3246549FD00F898C6 /* Main.storyboard in Resources */,
@@ -537,6 +560,7 @@
 				4BEE0CFF2465CD1B00F898C6 /* ForecastData.swift in Sources */,
 				4BEE0CCE246549FD00F898C6 /* SceneDelegate.swift in Sources */,
 				4B37AFF124685816005777B5 /* DateManagerProtocol.swift in Sources */,
+				4BA82830246C47CB0004DBEB /* HourlyForecastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
