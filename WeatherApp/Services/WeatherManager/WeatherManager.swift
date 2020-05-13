@@ -11,7 +11,6 @@ import Foundation
 private enum Constants {
     static let kelvinConstant: Int16 = 273
     static let numberForecastsInDay = 8
-    static let oneDayIndex = 1
     static let dayPod = "d"
     static let feelsLikeParameterName = "Feels like"
     static let humidityParameterName = "Humidity"
@@ -110,7 +109,7 @@ class WeatherManager: WeatherManagerProtocol {
     }
     
     private func calculateWeakForecastParameters(weatherData: WeatherData, daysCount: Int) -> [WeakForecast] {
-        Array(Constants.oneDayIndex...daysCount).compactMap {
+        Array(.zero...daysCount).compactMap {
             let forecastDay = Calendar.current.date(byAdding: .day, value: $0, to: Date()) ?? Date()
             let startOfDay = Int(Calendar.current.startOfDay(for: forecastDay).timeIntervalSince1970)
             let endOfDay = Int(Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: forecastDay)

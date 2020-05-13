@@ -8,6 +8,13 @@
 
 import Foundation
 
+private enum Constants {
+    static let numberOfTodayForecast = 1
+    static let numberOfInfoSectionsInRow = 2
+    static let arrayIndexDifference = 1
+    static let nextArrayIterrationStep = 1
+}
+
 class WeatherInfoPresenter {
     
     private unowned let view: WeatherInfoViewProtocol
@@ -60,11 +67,17 @@ class WeatherInfoPresenter {
     }
     
     private func numberOfWeakForecast() -> Int {
-        return weatherData?.weakForecast.count ?? .zero
+        guard let weakForecastCount = weatherData?.weakForecast.count else {
+            return .zero
+        }
+        return weakForecastCount - Constants.numberOfTodayForecast
     }
     
     private func numberOfInfoSections() -> Int {
-        return (weatherData?.weatherInfo.count ?? .zero) / 2
+        guard let weatherInfoDataCount = weatherData?.weatherInfo.count else {
+            return .zero
+        }
+        return weatherInfoDataCount / Constants.numberOfInfoSectionsInRow
     }
 }
 
@@ -85,12 +98,12 @@ extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
     }
     
     func weakForecast(for indexPath: IndexPath) -> WeakForecast? {
-        return weatherData?.weakForecast[indexPath.row]
+        return weatherData?.weakForecast[indexPath.row + Constants.numberOfTodayForecast]
     }
     
     func weatherInfo(for indexPath: IndexPath) -> [WeatherInfo?] {
-        let elementPosition = indexPath.row * 2 - (weatherData?.weakForecast.count ?? .zero) * 2
-        let nextElemenPosition = elementPosition + 1
+        let elementPosition = indexPath.row - numberOfWeakForecast()
+        let nextElemenPosition = elementPosition + Constants.nextArrayIterrationStep
         return [weatherData?.weatherInfo[elementPosition], weatherData?.weatherInfo[nextElemenPosition]]
     }
     
@@ -99,12 +112,11 @@ extension WeatherInfoPresenter: WeatherInfoPresenterProtocol {
     }
     
     func weakForecastRange() -> ClosedRange<Int> {
-        return 0...(weatherData?.weakForecast.count ?? 1) - 1
+        return .zero...numberOfWeakForecast() - Constants.arrayIndexDifference
     }
     
     func weatherInfoRange() -> ClosedRange<Int> {
-        let startValue = weatherData?.weakForecast.count ?? .zero
-        return (startValue)...(startValue + (weatherData?.weatherInfo.count ?? 1)) - 1
+        let startValue = numberOfWeakForecast()
+        return (startValue)...(startValue + numberOfInfoSections()) - Constants.arrayIndexDifference
     }
-    
 }

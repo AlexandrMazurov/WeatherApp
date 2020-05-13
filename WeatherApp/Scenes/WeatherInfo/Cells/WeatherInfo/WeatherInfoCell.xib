@@ -19,13 +19,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="466" height="118"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1M-4e-M7r">
+                        <rect key="frame" x="20" y="0.0" width="426" height="0.0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.17000000000000001" id="m0q-ik-dX2"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="D11-ct-xoI" secondAttribute="bottom" id="DBw-2W-JlH"/>
-                    <constraint firstItem="D11-ct-xoI" firstAttribute="top" secondItem="BG2-pp-wNY" secondAttribute="top" id="ZFr-5Z-sqd"/>
-                    <constraint firstItem="D11-ct-xoI" firstAttribute="leading" secondItem="BG2-pp-wNY" secondAttribute="leading" id="h9l-rh-58t"/>
-                    <constraint firstAttribute="trailing" secondItem="D11-ct-xoI" secondAttribute="trailing" id="vOb-kz-0ws"/>
+                    <constraint firstItem="D11-ct-xoI" firstAttribute="top" secondItem="q1M-4e-M7r" secondAttribute="bottom" id="5fj-YZ-K2X"/>
+                    <constraint firstAttribute="trailing" secondItem="D11-ct-xoI" secondAttribute="trailing" id="KGS-M8-5C0"/>
+                    <constraint firstItem="q1M-4e-M7r" firstAttribute="leading" secondItem="BG2-pp-wNY" secondAttribute="leading" constant="20" id="LfQ-w5-z1n"/>
+                    <constraint firstAttribute="bottom" secondItem="D11-ct-xoI" secondAttribute="bottom" id="SBB-rf-JV2"/>
+                    <constraint firstItem="q1M-4e-M7r" firstAttribute="top" secondItem="BG2-pp-wNY" secondAttribute="top" id="egs-Qm-U8X"/>
+                    <constraint firstAttribute="trailing" secondItem="q1M-4e-M7r" secondAttribute="trailing" constant="20" id="qi2-UB-l6J"/>
+                    <constraint firstItem="D11-ct-xoI" firstAttribute="leading" secondItem="BG2-pp-wNY" secondAttribute="leading" id="ulQ-kT-Kqm"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

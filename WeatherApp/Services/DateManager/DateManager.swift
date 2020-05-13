@@ -33,10 +33,10 @@ class DateManager: DateManagerProtocol {
         }
     }
     
-    private func getFormat(format: [NSCalendar.Unit], interval: TimeInterval) -> String {
+    private func getFormat(format: NSCalendar.Unit, interval: TimeInterval) -> String {
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .pad
-        formatter.allowedUnits = [.hour]
+        formatter.allowedUnits = format
         let startOfDay = Calendar.current.startOfDay(for: Date(timeIntervalSince1970: interval))
         return formatter.string(from: interval - startOfDay.timeIntervalSince1970) ?? ""
     }

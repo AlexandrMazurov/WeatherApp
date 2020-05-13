@@ -24,7 +24,7 @@ class WeatherInfoItemView: UIView, NibLoadable {
     }
     
     func configure(with info: WeatherInfo?) {
-        self.parameterValueNameLabel.text = info?.name
+        self.parameterValueNameLabel.text = info?.name.uppercased()
         self.parameterValueLabel.text = info?.value
     }
 }

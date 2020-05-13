@@ -204,6 +204,7 @@
 			children = (
 				4B38D02D246A92B80065B3F4 /* WeatherInfoViewController.swift */,
 				4B38D02F246A92D20065B3F4 /* WeatherInfoViewProtocol.swift */,
+				4BEE0CD1246549FD00F898C6 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -319,7 +320,6 @@
 				4B38D029246A921A0065B3F4 /* Scenes */,
 				4BEE0CCB246549FD00F898C6 /* AppDelegate.swift */,
 				4BEE0CCD246549FD00F898C6 /* SceneDelegate.swift */,
-				4BEE0CD1246549FD00F898C6 /* Main.storyboard */,
 				4BEE0CD7246549FD00F898C6 /* Assets.xcassets */,
 				4BEE0CD9246549FD00F898C6 /* LaunchScreen.storyboard */,
 				4BEE0CDC246549FE00F898C6 /* Info.plist */,

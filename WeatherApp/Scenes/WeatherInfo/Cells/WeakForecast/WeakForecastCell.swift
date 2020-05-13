@@ -18,7 +18,7 @@ class WeakForecastCell: UITableViewCell {
     func configure(with forecast: WeakForecast?) {
         self.dayNameLabel.text = forecast?.dayName
         self.weatherImageView.image = UIImage(named: forecast?.imageName ?? "")
-        self.maxTemperatureLabel.text = "\(forecast?.maxTemperature ?? .zero)°"
-        self.minTemperatureLabel.text = "\(forecast?.minTemperature ?? .zero)°"
+        self.maxTemperatureLabel.text = forecast?.maxTemperature.description
+        self.minTemperatureLabel.text = forecast?.minTemperature.description
     }
 }
