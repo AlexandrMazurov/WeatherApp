@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B1ADFCB246C5951005A0C57 /* NSDictionary+Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADFCA246C5950005A0C57 /* NSDictionary+Plist.swift */; };
+		4B1ADFCD246C5991005A0C57 /* OWM.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B1ADFCC246C5991005A0C57 /* OWM.plist */; };
 		4B22F08B2466EE1200D1CE10 /* WeatherManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B22F0832466EE1200D1CE10 /* WeatherManagedObject+CoreDataClass.swift */; };
 		4B22F08C2466EE1200D1CE10 /* WeatherManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B22F0842466EE1200D1CE10 /* WeatherManagedObject+CoreDataProperties.swift */; };
 		4B22F08D2466EE1200D1CE10 /* WeakForecastManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B22F0852466EE1200D1CE10 /* WeakForecastManagedObject+CoreDataClass.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B1ADFCA246C5950005A0C57 /* NSDictionary+Plist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDictionary+Plist.swift"; sourceTree = "<group>"; };
+		4B1ADFCC246C5991005A0C57 /* OWM.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = OWM.plist; sourceTree = "<group>"; };
 		4B22F0832466EE1200D1CE10 /* WeatherManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4B22F0842466EE1200D1CE10 /* WeatherManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4B22F0852466EE1200D1CE10 /* WeakForecastManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeakForecastManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA8282B246BFA470004DBEB /* UIViewController+Alerts.swift */,
+				4B1ADFCA246C5950005A0C57 /* NSDictionary+Plist.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				4BEE0CD9246549FD00F898C6 /* LaunchScreen.storyboard */,
 				4BEE0CDC246549FE00F898C6 /* Info.plist */,
 				4BEE0CD4246549FD00F898C6 /* WeatherApp.xcdatamodeld */,
+				4B1ADFCC246C5991005A0C57 /* OWM.plist */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				4B38D044246AAC4E0065B3F4 /* HourForecastCell.xib in Resources */,
 				4B366B4C246B2CBD00A70299 /* WeatherInfoItemView.xib in Resources */,
 				4B38D03A246AABB40065B3F4 /* WeatherInfoCell.xib in Resources */,
+				4B1ADFCD246C5991005A0C57 /* OWM.plist in Resources */,
 				4BEE0CDB246549FD00F898C6 /* LaunchScreen.storyboard in Resources */,
 				4BA82832246C47E30004DBEB /* HourlyForecastView.xib in Resources */,
 				4BEE0CD8246549FD00F898C6 /* Assets.xcassets in Resources */,
@@ -521,6 +528,7 @@
 				4BEE0D092465CF7D00F898C6 /* WindInfoData.swift in Sources */,
 				4B22F08D2466EE1200D1CE10 /* WeakForecastManagedObject+CoreDataClass.swift in Sources */,
 				4B37AFF424687A7A005777B5 /* LocationManagerProtocol.swift in Sources */,
+				4B1ADFCB246C5951005A0C57 /* NSDictionary+Plist.swift in Sources */,
 				4B22F08F2466EE1200D1CE10 /* HourlyForecastManagedObject+CoreDataClass.swift in Sources */,
 				4BEE0CFD2465CBCB00F898C6 /* WeatherData.swift in Sources */,
 				4B22F0902466EE1200D1CE10 /* HourlyForecastManagedObject+CoreDataProperties.swift in Sources */,
