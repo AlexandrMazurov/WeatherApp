@@ -354,7 +354,6 @@
 				4BEE0CD9246549FD00F898C6 /* LaunchScreen.storyboard */,
 				4BEE0CDC246549FE00F898C6 /* Info.plist */,
 				4BEE0CD4246549FD00F898C6 /* WeatherApp.xcdatamodeld */,
-				4B1ADFCC246C5991005A0C57 /* OWM.plist */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -402,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				4BEE0CF9246552BA00F898C6 /* URLEndpoint */,
+				4B1ADFCC246C5991005A0C57 /* OWM.plist */,
 				4BEE0CF52465500C00F898C6 /* ApiProtocol.swift */,
 				4BEE0CF72465503D00F898C6 /* OpenWeatherMapApi.swift */,
 			);
